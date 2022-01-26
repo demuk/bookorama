@@ -1,4 +1,5 @@
 from app import db
+from datetime import datetime
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -8,5 +9,12 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
-    
+
+
+class Book(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))
+    author = db.Column(db.String(140))
+    genre = db.Column(db.String(56))
+    timestamp = db.Column(db.DateTime, index=True, unique=True, default=datetime.utcnow)
     
